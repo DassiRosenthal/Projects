@@ -1,0 +1,10 @@
+textarea{
+    width:80%;
+    color:#54a9ff;
+    height: 3em;
+    padding: 2px;
+   }
+.addComment{
+    height: 3.5em;
+    vertical-align: top;
+}

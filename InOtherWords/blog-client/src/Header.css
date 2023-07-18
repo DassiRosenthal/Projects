@@ -1,0 +1,47 @@
+header {
+  background-image: linear-gradient(to right, white, #54a9ff, #0681fb);
+  box-sizing: border-box;
+  padding: 1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#logo {
+  width: 15%;
+  transition: all 0.3s ease-in-out;
+}
+
+nav {
+  color: #0681fb;
+}
+
+.header-button,
+.login-form input {
+  border: 1px solid lightskyblue;
+  background-color: white;
+  text-decoration: none;
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.current-user-display {
+  display: flex;
+  color: white;
+  font-size: 1.5em;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+
+.registration-msg {
+  text-align: center;
+}
