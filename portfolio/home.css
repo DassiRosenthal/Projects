@@ -1,0 +1,16 @@
+.body {
+    padding:10%;
+    text-align: center;
+    color: white;
+    background-color: black;
+    height: 100vh;
+}
+h1{
+    font-size: 500%;
+}
+h2{
+    font-size:300%;
+}
+p{
+    font-size: 150%;
+}
