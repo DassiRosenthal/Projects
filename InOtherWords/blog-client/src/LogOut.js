@@ -3,7 +3,7 @@ import React from 'react'
 export default function LogOut({ username, setUsername, setError }) {
   async function logout() {
     try {
-      const response = await fetch('http://localhost:8080/logout', {
+      const response = await fetch('https://inotherwords-api.onrender.com/logout', {
         method: 'POST',
         credentials: 'include',
       });

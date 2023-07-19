@@ -10,7 +10,7 @@ export default function AddComment({ postId, setError }) {
     async function onSubmit(e) {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8080/addComment/${postId}`, {
+            const response = await fetch(`https://inotherwords-api.onrender.com/addComment/${postId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -8,7 +8,7 @@ export default function Posts({ setError }) {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch('http://localhost:8080/posts');
+        const response = await fetch('https://inotherwords-api.onrender.com/posts');
         if (!response.ok) {
           const errorText = await response.text();
           throw new Error(errorText);

@@ -13,7 +13,7 @@ export default function AddPost({ setError }) {
   async function onSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/posts', {
+      const response = await fetch('https://inotherwords-api.onrender.com/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
