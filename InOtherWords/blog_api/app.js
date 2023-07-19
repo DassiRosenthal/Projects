@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const io = require('socket.io');
 const app = express();
+const PORT = process.env.PORT || 8080;
 const session = require('express-session');
 
 const server = http.createServer(app);
@@ -56,5 +57,7 @@ app.use(function (err, req, res, next) {
     .send(err.message);
 });
 
-server.listen(8080);
+server.listen(PORT, ()=>{
+  console.log(`server started on port ${PORT}`);
+});
 
