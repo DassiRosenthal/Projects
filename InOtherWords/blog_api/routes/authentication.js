@@ -2,36 +2,40 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
+router.route('/')
+  .get(async (req, res) => {
+    const thePosts = await global.posts.find().toArray();
+    res.send(thePosts);
+  })
 
-router.route('/register')
-  .post(async (req, res, next) => {
-    const { validationErr } = userSchema.validate(req.body);
-    if (validationErr) {
-      const err = new Error(validationErr.details[0].message);
-      err.statusCode = 403;
+router.post('/register', async (req, res, next) => {
+  const { validationErr } = userSchema.validate(req.body);
+  if (validationErr) {
+    const err = new Error(validationErr.details[0].message);
+    err.statusCode = 403;
+    return next(err);
+  }
+  bcrypt.hash(req.body.password, 10, async (err, hash) => {
+    if (err) {
       return next(err);
     }
-    bcrypt.hash(req.body.password, 10, async (err, hash) => {
-      if (err) {
-        return next(err);
-      }
 
-      try {
-        const result = await global.users.insertOne({ email: req.body.email, password: hash });
-        if(!result.insertedId){
-          return next(new Error('Registration failed.'))
-        }
+    try {
+      const result = await global.users.insertOne({ email: req.body.email, password: hash });
+      if (!result.insertedId) {
+        return next(new Error('Registration failed.'))
       }
-      catch (err) {
-        if (err.code === 11000) {
-          return next(new Error('Username is taken. Please try another .'));
-        }
-        return next(new Error('Registration Failed'));
+    }
+    catch (err) {
+      if (err.code === 11000) {
+        return next(new Error('Username is taken. Please try another .'));
       }
+      return next(new Error('Registration Failed'));
+    }
 
-      res.sendStatus(201);
-    });
-  })
+    res.sendStatus(201);
+  });
+})
 
 
 router.post('/login', async (req, res, next) => {

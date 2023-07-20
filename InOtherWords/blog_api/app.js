@@ -39,11 +39,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-app.use('/', function(){
-  console.log('hello')
-})
+// app.use('/', function(){
+//   console.log('hello')
+// })
 app.use('/posts', require('./routes/posts.js')(socketIo));
-//app.use('/', require('./routes/authentication.js'));
+app.use('/', require('./routes/authentication.js'));
 app.use('/addComment', require('./routes/comments.js')(socketIo));
 
 // catch 404 and forward to error handler
