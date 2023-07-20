@@ -8,7 +8,7 @@ const session = require('express-session');
 const server = http.createServer(app);
 const socketIo = io(server, {
   cors: {
-    origin: 'https://master--in-other-words.netlify.app/'
+    origin: 'https://master--in-other-words.netlify.app'
   }
 });
 socketIo.on('connection', function(socket){
@@ -24,7 +24,7 @@ const client = new MongoClient(uri);
 
 
 app.use(require('cors')({
-  origin: 'https://master--in-other-words.netlify.app/',
+  origin: 'https://master--in-other-words.netlify.app',
   credentials: true
 }));
 
