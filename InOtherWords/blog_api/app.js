@@ -8,7 +8,7 @@ const session = require('express-session');
 const server = http.createServer(app);
 const socketIo = io(server, {
   cors: {
-    origin: 'http://localhost:3000'
+    origin: 'https://master--in-other-words.netlify.app/'
   }
 });
 socketIo.on('connection', function(socket){
