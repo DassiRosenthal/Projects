@@ -2,11 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
-router.route('/')
-  .get(async (req, res) => {
-    const thePosts = await global.posts.find().toArray();
-    res.send(thePosts);
-  })
 
 router.post('/register', async (req, res, next) => {
   const { validationErr } = userSchema.validate(req.body);

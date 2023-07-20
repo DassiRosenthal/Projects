@@ -11,7 +11,7 @@ const socketIo = io(server, {
     origin: 'https://master--in-other-words.netlify.app'
   }
 });
-socketIo.on('connection', function(socket){
+socketIo.on('connection', function (socket) {
   socket.removeAllListeners();
 })
 
@@ -39,9 +39,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-// app.use('/', function(){
-//   console.log('hello')
-// })
+
 app.use('/posts', require('./routes/posts.js')(socketIo));
 app.use('/', require('./routes/authentication.js'));
 app.use('/addComment', require('./routes/comments.js')(socketIo));
@@ -59,7 +57,7 @@ app.use(function (err, req, res, next) {
     .send(err.message);
 });
 
-server.listen(PORT, ()=>{
+server.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
 
