@@ -35,7 +35,7 @@ export default function LogIn({ setUsername, setError }) {
 
   async function register() {
     try {
-      const response = await fetch('http://localhost:8080/register', {
+      const response = await fetch('https://inotherwords-api.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
