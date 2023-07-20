@@ -22,7 +22,7 @@ export default function Posts({ setError }) {
   }, [setError]);
 
   useEffect(() => {
-    const socket = io('http://localhost:8080');
+    const socket = io('https://inotherwords-api.onrender.com/');
 
     socket.on('post', newPost => {
       const newPostsArray = [...posts];
