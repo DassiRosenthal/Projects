@@ -24,7 +24,7 @@ const client = new MongoClient(uri);
 
 
 app.use(require('cors')({
-  origin: 'http://localhost:3000',
+  origin: 'https://master--in-other-words.netlify.app/',
   credentials: true
 }));
 
