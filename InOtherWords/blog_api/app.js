@@ -43,7 +43,7 @@ app.use(session({
   secret: 'the-secret-key',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create(mongoStoreOptions);
+  store: MongoStore.create(mongoStoreOptions)
 }));
 
 app.use('/posts', require('./routes/posts.js')(socketIo));
