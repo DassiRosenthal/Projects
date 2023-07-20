@@ -23,11 +23,10 @@ router.post('/register', async (req, res, next) => {
     }
     catch (err) {
       if (err.code === 11000) {
-        return next(new Error('Username is taken. Please try another .'));
+        return next(new Error('Username is taken. Please try another.'));
       }
       return next(new Error('Registration Failed'));
     }
-
     res.sendStatus(201);
   });
 })

@@ -1,9 +1,10 @@
 const express = require('express');
 const http = require('http');
 const io = require('socket.io');
-const app = express();
 const PORT = process.env.PORT || 8080;
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const app = express();
 
 const server = http.createServer(app);
 const socketIo = io(server, {
@@ -18,15 +19,14 @@ socketIo.on('connection', function (socket) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = 'mongodb+srv://dassirosenthal:MjY6Hal2oC2TKJkI@cluster0.ecnixjn.mongodb.net/blog?retryWrites=true&w=majority';
-const client = new MongoClient(uri);
-
-
 app.use(require('cors')({
   origin: 'https://master--in-other-words.netlify.app',
   credentials: true
 }));
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = 'mongodb+srv://dassirosenthal:MjY6Hal2oC2TKJkI@cluster0.ecnixjn.mongodb.net/blog?retryWrites=true&w=majority';
+const client = new MongoClient(uri);
 
 (async () => {
   await client.connect();
@@ -34,10 +34,16 @@ app.use(require('cors')({
   global.users = await client.db('blog').collection('users');
 })();
 
+const mongoStoreOptions = {
+  mongoUrl: uri,
+  collectionName: 'sessions'
+}
+
 app.use(session({
-  secret: 'secret',
+  secret: 'the-secret-key',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: MongoStore.create(mongoStoreOptions);
 }));
 
 app.use('/posts', require('./routes/posts.js')(socketIo));
