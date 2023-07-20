@@ -19,6 +19,7 @@ header {
 
 nav {
   color: #0681fb;
+  margin-bottom: 3px;
 }
 
 .header-button,
@@ -44,4 +45,57 @@ nav {
 
 .registration-msg {
   text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  #logo {
+    width: 20%;
+  }
+
+  .header-button,
+  .login-form input {
+    padding: 2px;
+  }
+
+  .current-user-display {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .header-button,
+  .login-form input {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 375px) {
+
+  .header-button,
+  .login-form input {
+    font-size: 0.55em;
+  }
+}
+
+@media screen and (max-width: 341px) {
+
+  .header-button,
+  .login-form input {
+    font-size: 0.5em;
+  }
+}
+
+@media screen and (max-width: 316px) {
+
+  .header-button,
+  .login-form input {
+    font-size: 0.4em;
+  }
 }

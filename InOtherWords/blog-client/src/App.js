@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 function App() {
   const [error, setError] = useState();
-
   return (
     <BrowserRouter>
       <Header error={error} setError={setError} />

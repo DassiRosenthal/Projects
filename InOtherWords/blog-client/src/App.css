@@ -1,6 +1,67 @@
-.route{
-    margin-top: 220px;
+.route {
+    margin-top: 215px;
 }
-body{
+
+@media screen and (max-width: 1600px) {
+    .route {
+        margin-top: 200px;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .route {
+        margin-top: 180px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .route {
+        margin-top: 160px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .route {
+        margin-top: 140px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .route {
+        margin-top: 120px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .route {
+        margin-top: 161px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .route {
+        margin-top: 142px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .route {
+        margin-top: 142px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .route {
+        margin-top: 132px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .route {
+        margin-top: 122px;
+    }
+}
+
+body {
     background-image: linear-gradient(to right, white, #54a9ff, #0681fb);
 }

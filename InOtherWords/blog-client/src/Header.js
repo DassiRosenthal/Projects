@@ -5,10 +5,21 @@ import Authentication from './Authentication';
 import Error from './Error';
 
 window.onscroll = ()=>{
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.getElementById('logo').style.width = '8%';
+  var checkScreenSize = window.matchMedia("(max-width: 750px)")
+  let largeLogo;
+  let smallLogo;
+  if(checkScreenSize.matches){
+    largeLogo = '20%';
+    smallLogo = '15%';
+  }
+  else{
+    largeLogo = '15%';
+    smallLogo = '8%';
+  }
+  if (document.body.scrollTop > 45 || document.documentElement.scrollTop > 45) {
+    document.getElementById('logo').style.width = smallLogo;
   } else {
-    document.getElementById('logo').style.width = '15%';
+    document.getElementById('logo').style.width = largeLogo;
   }
 };
 
