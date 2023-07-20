@@ -32,33 +32,33 @@
     }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 760px) {
     .route {
-        margin-top: 161px;
+        margin-top: 181px;
     }
 }
 
 @media screen and (max-width: 550px) {
     .route {
-        margin-top: 142px;
+        margin-top: 161px;
     }
 }
 
 @media screen and (max-width: 500px) {
     .route {
-        margin-top: 142px;
+        margin-top: 149px;
     }
 }
 
 @media screen and (max-width: 450px) {
     .route {
-        margin-top: 132px;
+        margin-top: 143px;
     }
 }
 
 @media screen and (max-width: 350px) {
     .route {
-        margin-top: 122px;
+        margin-top: 131px;
     }
 }
 
