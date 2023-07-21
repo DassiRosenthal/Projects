@@ -1,6 +1,6 @@
 module.exports = function sessionOnlyMiddleware(req, res, next) {
-  let sessionInfo = req.session.split('username:');
-  let username = sessionInfo[1];
+  const session = JSON.parse(req.session);
+  const username = session.username;
   if (username) {
     next();
   } else {
