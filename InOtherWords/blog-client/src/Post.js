@@ -11,9 +11,9 @@ export default function Post({ post: { _id, title, body, author, date, comments,
       <h3>by {author} on {new Date(date).toLocaleString()} </h3>
       <article>{body}</article>
       <div className='comments'>
-        <LikeCounter type='like' prevCount={likes || 0} postId={_id} setError={setError} />
-        <LikeCounter type='dislike' prevCount={dislikes || 0} postId={_id} setError={setError} />
         <AddComment postId={_id} setError={setError} />
+        <LikeCounter type='like' prevCount={likes || 0} postId={_id} setError={setError} />
+        <LikeCounter type='dislike' prevCount={dislikes || 0} postId={_id} setError={setError} />        
         {comments ? comments.map(c => <Comment key={c.id} comment={c} />) : ''}
       </div>
 

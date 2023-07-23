@@ -1,12 +1,12 @@
-.addCommentForm {
-    display: inline;
+.addCommentForm{
+    display:inline;
 }
-
 textarea {
     width: 80%;
     color: #54a9ff;
     height: 3em;
     padding: 2px;
+    resize: none;
 }
 
 .addComment {
