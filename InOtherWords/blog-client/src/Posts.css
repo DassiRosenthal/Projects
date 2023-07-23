@@ -17,8 +17,22 @@ article {
 
 .like-button {
     border: none;
+    display: inline;
+    position: relative;
 }
 
 .like-emoji {
-    width: 50px;
+    width: 45px;
+}
+
+.like-count {
+    position: absolute;
+    top: 50%;
+    left: 45%
+}
+
+.dislike-count {
+    position: absolute;
+    top: 18%;
+    left: 30%
 }
