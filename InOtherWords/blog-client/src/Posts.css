@@ -1,15 +1,24 @@
-
-.post{
+.post {
     background-color: white;
     border: 3px solid #54a9ff;
     margin-bottom: 5px;
-    margin-top:5px;
-    padding:5px;
+    margin-top: 5px;
+    padding: 5px;
     border-radius: 8px;
 }
-h2{
-    margin-top:6px
+
+h2 {
+    margin-top: 6px
 }
-article{
-    margin-bottom:6px;
+
+article {
+    margin-bottom: 6px;
+}
+
+.like-button {
+    border: none;
+}
+
+.like-emoji {
+    width: 50px;
 }

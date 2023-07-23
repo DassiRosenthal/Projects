@@ -10,9 +10,10 @@ export default function LikeCounter({ type, prevCount }) {
     }
     return (
         <>
-            <button onClick={countClicks}>
-                <img src={imgsrc} alt='like'></img> <span>{count}</span>
+            <button className='like-button' onClick={countClicks}>
+                <img className='like-emoji' src={imgsrc} alt='like'></img> 
             </button>
+            <span>{count}</span>
         </>
     )
 }
