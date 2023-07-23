@@ -49,6 +49,7 @@ app.use(session({
 app.use('/posts', require('./routes/posts.js')(socketIo));
 app.use('/', require('./routes/authentication.js'));
 app.use('/addComment', require('./routes/comments.js')(socketIo));
+app.use('/addLike', require('./routes/likes.js')(socketIo));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
