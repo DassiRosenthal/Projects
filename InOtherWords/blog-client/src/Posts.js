@@ -5,6 +5,7 @@ import { io } from 'socket.io-client';
 
 export default function Posts({ setError }) {
   const [posts, setPosts] = useState([]);
+  
   useEffect(() => {
     (async () => {
       try {

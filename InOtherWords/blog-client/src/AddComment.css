@@ -3,6 +3,7 @@ textarea{
     color:#54a9ff;
     height: 3em;
     padding: 2px;
+    display: inline;
    }
 .addComment{
     height: 3.5em;
