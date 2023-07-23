@@ -3,7 +3,7 @@ import AddComment from './AddComment';
 import Comment from './Comment';
 import LikeCounter from './LikeCounter';
 
-export default function Post({ post: { _id, title, body, author, date, comments }, setError }) {
+export default function Post({ post: { _id, title, body, author, date, comments, likes, dislikes }, setError }) {
 
   return (
     <div className='post'>
@@ -14,8 +14,8 @@ export default function Post({ post: { _id, title, body, author, date, comments 
         <AddComment postId={_id} setError={setError} />
         {comments ? comments.map(c => <Comment key={c.id} comment={c} />) : ''}
       </div>
-      <LikeCounter parent='post' type='like'/>
-      <LikeCounter parent='post' type='dislike' />
+      <LikeCounter parent='post' type='like' prevCount={likes || 0}/>
+      <LikeCounter parent='post' type='dislike' prevCount={dislikes || 0} />
     </div>
   )
 

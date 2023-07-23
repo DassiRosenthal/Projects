@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-export default async function LikeCounter({ type, parent }) {
+export default async function LikeCounter({parent,  type, prevCount }) {
     let imgsrc;
     type === 'like' ? imgsrc = 'like-emoji.png' : imgsrc = 'dislike-emoji.png';
-    const previousCount = 0 //await fetch() from db;
-    const [count, setCount] = useState(previousCount);
+        const [count, setCount] = useState(prevCount);
     function countClicks() {
         setCount(count + 1);
 
