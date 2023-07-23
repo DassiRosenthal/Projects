@@ -12,10 +12,11 @@ export default function Post({ post: { _id, title, body, author, date, comments,
       <article>{body}</article>
       <div className='comments'>
         <AddComment postId={_id} setError={setError} />
+        <LikeCounter type='like' prevCount={likes || 0} />
+        <LikeCounter type='dislike' prevCount={dislikes || 0} />
         {comments ? comments.map(c => <Comment key={c.id} comment={c} />) : ''}
       </div>
-      <LikeCounter  type='like' prevCount={likes || 0}/>
-      <LikeCounter  type='dislike' prevCount={dislikes || 0} />
+
     </div>
   )
 
