@@ -33,7 +33,7 @@ export default function AddComment({ postId, setError }) {
     }
 
     return (
-        <form className='addComment' onSubmit={onSubmit}>
+        <form className='addCommentForm' onSubmit={onSubmit}>
             <textarea name='body' value={formData.body} onChange={setFormData} ></textarea>
             <button className='addComment'>Add Comment</button>
         </form>
