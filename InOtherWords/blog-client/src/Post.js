@@ -14,8 +14,8 @@ export default function Post({ post: { _id, title, body, author, date, comments,
         <AddComment postId={_id} setError={setError} />
         {comments ? comments.map(c => <Comment key={c.id} comment={c} />) : ''}
       </div>
-      <LikeCounter parent='post' type='like' prevCount={likes || 0}/>
-      <LikeCounter parent='post' type='dislike' prevCount={dislikes || 0} />
+      <LikeCounter  type='like' prevCount={likes || 0}/>
+      <LikeCounter  type='dislike' prevCount={dislikes || 0} />
     </div>
   )
 
