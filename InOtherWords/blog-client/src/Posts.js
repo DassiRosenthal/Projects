@@ -40,24 +40,24 @@ export default function Posts({ setError }) {
       setPosts(newPostsArray);
 
     });
-    socket.on('like', like => {
-      const newPostsArray = [...posts];
-      newPostsArray.forEach(p => {
-        if (p._id === like.post) {
-          p.likes = like.count;
-        }
-      })
-      setPosts(newPostsArray);
-    });
-    socket.on('dislike', dislike => {
-      const newPostsArray = [...posts];
-      newPostsArray.forEach(p => {
-        if (p._id === dislike.post) {
-          p.dislikes = dislike.count;
-        }
-      })
-      setPosts(newPostsArray);
-    });
+    // socket.on('like', like => {
+    //   const newPostsArray = [...posts];
+    //   newPostsArray.forEach(p => {
+    //     if (p._id === like.post) {
+    //       p.likes = like.count;
+    //     }
+    //   })
+    //   setPosts(newPostsArray);
+    // });
+    // socket.on('dislike', dislike => {
+    //   const newPostsArray = [...posts];
+    //   newPostsArray.forEach(p => {
+    //     if (p._id === dislike.post) {
+    //       p.dislikes = dislike.count;
+    //     }
+    //   })
+    //   setPosts(newPostsArray);
+    // });
 
     return () => {
       socket.disconnect();

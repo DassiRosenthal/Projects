@@ -21,7 +21,10 @@ export default function LogIn({ setUsername, setError }) {
         credentials: 'include',
         body: JSON.stringify(formData)
       });
+      console.log(response);
+      console.log('----------------')
       const data = response.json();
+      console.log(data)
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(errorText);
