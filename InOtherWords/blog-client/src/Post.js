@@ -4,6 +4,7 @@ import Comment from './Comment';
 import LikeCounter from './LikeCounter';
 //import { io } from 'socket.io-client';
 
+<<<<<<< HEAD
 export default function Post({ post: { _id, title, body, author, date, comments, likes, dislikes }, setError }) {
   // let { _id, title, body, author, date, comments, likes, dislikes } = post;
   // const [curPost, setPost] = useState(post);
@@ -23,6 +24,26 @@ export default function Post({ post: { _id, title, body, author, date, comments,
   //     }
   //   });
   // }, [curPost, curPost._id]);
+=======
+export default function Post({ post/*: { _id, title, body, author, date, comments, likes, dislikes }*/, setError }) {
+  let { _id, title, body, author, date, comments, likes, dislikes } = post;
+  const [curPost, setPost] = useState(post);
+  useEffect(() => {
+    const socket = io('https://inotherwords-api.onrender.com/');
+    socket.on('like', like => {
+      if (curPost._id === like.post) {
+       const newPost = {...curPost, likes: like.count};
+       setPost(newPost);
+      }
+    });
+    socket.on('dislike', dislike => {
+      if (curPost._id === dislike.post) {
+        const newPost = {...curPost, dislikes: dislike.count};
+        setPost(newPost);
+      }
+    });
+    },[curPost, curPost._id]);
+>>>>>>> 78d210ef5c80f66274598291ce95a55a62b4d1d6
   return (
     <div className='post'>
       <h2>{title}</h2>
