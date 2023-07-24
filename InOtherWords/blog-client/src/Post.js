@@ -21,7 +21,7 @@ export default function Post({ post/*: { _id, title, body, author, date, comment
         setPost(newPost);
       }
     });
-  });
+  },[curPost._id]);
   return (
     <div className='post'>
       <h2>{title}</h2>
