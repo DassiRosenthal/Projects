@@ -9,18 +9,36 @@ export default function Post({ post/*: { _id, title, body, author, date, comment
   const [curPost, setPost] = useState(post);
   useEffect(() => {
     const socket = io('https://inotherwords-api.onrender.com/');
-    socket.on('like', like => {
+    // socket.on('like', like => {
+    //   if (curPost._id === like.post) {
+    //    const newPost = {...curPost, likes: like.count};
+    //    setPost(newPost);
+    //   }
+    // });
+    // socket.on('dislike', dislike => {
+    //   if (curPost._id === dislike.post) {
+    //     const newPost = {...curPost, dislikes: dislike.count};
+    //     setPost(newPost);
+    //   }
+    // });
+    handleLike = (like)=> {
       if (curPost._id === like.post) {
        const newPost = {...curPost, likes: like.count};
        setPost(newPost);
       }
-    });
-    socket.on('dislike', dislike => {
+    };
+    handleDislike = (dislike) => {
       if (curPost._id === dislike.post) {
         const newPost = {...curPost, dislikes: dislike.count};
         setPost(newPost);
       }
-    });
+    };
+    socket.on('like', handleLike);
+    socket.on('dislike', handleDislike);
+    return () => {
+      socket.off('like', handleLike);
+      socket.off('dislike', handleDislike);
+    };
   },[curPost, curPost._id]);
   return (
     <div className='post'>
