@@ -20,7 +20,7 @@ module.exports = function (socketIo) {
             }
         }
         req.body.post = req.params.id;
-        socketIo.emit(`${req.body.type}`, req.body);
+        //socketIo.emit(`${req.body.type}`, req.body);
         res.sendStatus(201);
     });
 
