@@ -21,13 +21,13 @@ export default function Post({ post/*: { _id, title, body, author, date, comment
     //     setPost(newPost);
     //   }
     // });
-    handleLike = (like)=> {
+    const handleLike = (like)=> {
       if (curPost._id === like.post) {
        const newPost = {...curPost, likes: like.count};
        setPost(newPost);
       }
     };
-    handleDislike = (dislike) => {
+    const handleDislike = (dislike) => {
       if (curPost._id === dislike.post) {
         const newPost = {...curPost, dislikes: dislike.count};
         setPost(newPost);
