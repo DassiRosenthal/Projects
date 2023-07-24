@@ -52,7 +52,8 @@ router.post('/login', async (req, res, next) => {
       }
       existingUser.sessionID = req.sessionID;
       await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
-      res.json({ existingUser }, 200);
+      res.status(200);
+      res.send(existingUser);
     }
   }
   const err = new Error('Invalid username or password!');
