@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React/*, { useEffect, useState }*/ from 'react';
 import AddComment from './AddComment';
 import Comment from './Comment';
 import LikeCounter from './LikeCounter';
-import { io } from 'socket.io-client';
+//import { io } from 'socket.io-client';
 
-export default function Post({ post/*: { _id, title, body, author, date, comments, likes, dislikes }*/, setError }) {
-  let { _id, title, body, author, date, comments, likes, dislikes } = post;
-  const [curPost, setPost] = useState(post);
-  useEffect(() => {
-    const socket = io('https://inotherwords-api.onrender.com/');
-    socket.on('like', like => {
-      const newPost = [...curPost];
-      if (curPost._id === like.post) {
-        newPost.likes = like.count;
-      }
-      setPost(newPost);
-    });
-    socket.on('dislike', dislike => {
-      const newPost = [...curPost];
-      if (curPost._id === dislike.post) {
-        newPost.dislikes = dislike.count;
-      }
-      setPost(newPost);
-    });
-  });
+export default function Post({ post: { _id, title, body, author, date, comments, likes, dislikes }, setError }) {
+  // let { _id, title, body, author, date, comments, likes, dislikes } = post;
+  // const [curPost, setPost] = useState(post);
+  // useEffect(() => {
+  //   const socket = io('https://inotherwords-api.onrender.com/');
+  //   socket.on('like', like => {
+  //     if (curPost._id === like.post) {
+  //       const newPost = {...curPost, likes: like.count }
+  //       setPost(newPost)
+  //     }
+  //     ;
+  //   });
+  //   socket.on('dislike', dislike => {
+  //     if (curPost._id === dislike.post) {
+  //       const newPost = {...curPost, dislikes: dislike.count}
+  //       setPost(newPost);
+  //     }
+  //   });
+  // }, [curPost, curPost._id]);
   return (
     <div className='post'>
       <h2>{title}</h2>
