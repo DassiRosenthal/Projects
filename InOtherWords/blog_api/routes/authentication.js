@@ -39,13 +39,20 @@ router.post('/login', async (req, res, next) => {
     err.statusCode = 403;
     return next(err);
   }
-  const exists = await global.users.findOne({ email: req.body.email });
-  if (exists) {
-    const correctPswrd = await bcrypt.compare(req.body.password, exists.password);
+  const existingUser = await global.users.findOne({ email: req.body.email });
+  if (existingUser) {
+    const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
     if (correctPswrd) {
-      let name = req.body.email.split('@');
-      req.session.username = name[0];
-      return res.sendStatus(200);
+      const existingSessionID = existingUser.sessionID;
+      if (existingSessionID) {
+        const session = await req.sessionStore.get(existingSessionID);
+        if (session) {
+          req.session = session;
+        }
+      }
+      existingUser.sessionID = req.sessionID;
+      await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
+      res.json({ existingUser }, 200);
     }
   }
   const err = new Error('Invalid username or password!');

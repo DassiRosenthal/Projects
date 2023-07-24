@@ -12,9 +12,6 @@ const socketIo = io(server, {
     origin: 'https://master--in-other-words.netlify.app'
   }
 });
-socketIo.on('connection', function (socket) {
-  socket.removeAllListeners();
-})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
