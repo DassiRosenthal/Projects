@@ -17,6 +17,7 @@ article {
 
 .like-button {
     border: none;
+    background-color: white;
     display: inline;
     position: relative;
 }

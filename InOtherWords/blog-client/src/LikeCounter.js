@@ -12,7 +12,7 @@ export default function LikeCounter({ type, prevCount, postId, setError }) {
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include',
-                body: JSON.stringify({ 'type': type, 'count': count + 1 })
+                body: JSON.stringify({ 'type': type, 'count': prevCount + 1 })
             });
             if (!response.ok) {
                 if (response.status === 401) {
