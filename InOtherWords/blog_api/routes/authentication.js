@@ -33,6 +33,7 @@ router.post('/register', async (req, res, next) => {
 
 
 router.post('/login', async (req, res, next) => {
+  console.log('logging in');
   const { validationErr } = userSchema.validate(req.body);
   if (validationErr) {
     const err = new Error(validationErr.details[0].message);
