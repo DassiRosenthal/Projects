@@ -22,7 +22,7 @@ export default function LogIn({ setUsername, setError }) {
       });
       console.log(response);
       console.log('----------------')
-      const data = response.json();
+      const data = await response.json();
       console.log(data)
       if (!response.ok) {
         const errorText = await response.text();
