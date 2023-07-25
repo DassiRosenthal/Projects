@@ -52,6 +52,11 @@ router.post('/login', async (req, res, next) => {
       // }
       // existingUser.sessionID = req.sessionID;
       // await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
+      
+      //let name = req.body.email.split('@');
+      //req.session.username = name[0];
+      req.session.username = req.body.email;
+      //return res.sendStatus(200);
       res.status(200).send(existingUser);
     }
   }
