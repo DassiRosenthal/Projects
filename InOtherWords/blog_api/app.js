@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const io = require('socket.io');
-const PORT = 3000; //process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080; //3000;
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const app = express();
