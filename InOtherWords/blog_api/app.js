@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const socketIo = io(server, {
   cors: {
-    origin: 'https://master--in-other-words.netlify.app'
+    origin: 'https://in-other-words.netlify.app'
   }
 });
 
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(require('cors')({
-  origin: 'https://master--in-other-words.netlify.app/',
+  origin: 'https://in-other-words.netlify.app/',
   credentials: true
 }));
 
