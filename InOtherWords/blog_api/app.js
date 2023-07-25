@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(require('cors')({
-  origin: 'https://in-other-words.netlify.app/',
+  origin: 'https://in-other-words.netlify.app',
   credentials: true
 }));
 
