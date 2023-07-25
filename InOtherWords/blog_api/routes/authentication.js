@@ -63,7 +63,8 @@ router.post('/login', async (req, res, next) => {
      
       console.log('logging in- set username');
       //res.status(200).send(existingUser); 
-      return res.sendStatus(200);
+      res.statusCode = 200;
+      return res.send(existingUser);
     }
   }
   const err = new Error('Invalid username or password!');
