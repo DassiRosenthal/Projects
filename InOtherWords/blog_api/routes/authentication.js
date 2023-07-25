@@ -33,36 +33,29 @@ router.post('/register', async (req, res, next) => {
 
 
 router.post('/login', async (req, res, next) => {
-  console.log('logging in');
   const { validationErr } = userSchema.validate(req.body);
   if (validationErr) {
     const err = new Error(validationErr.details[0].message);
     err.statusCode = 403;
     return next(err);
   }
-  console.log('logging in- validated');
   const existingUser = await global.users.findOne({ email: req.body.email });
   if (existingUser) {
-    console.log('logging in- user exists');
     const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
     if (correctPswrd) {
-      console.log('logging in- correct password');
-      // const existingSessionID = existingUser.sessionID;
-      // if (existingSessionID) {
-      //   const session = await req.sessionStore.get(existingSessionID);
-      //   if (session) {
-      //     req.session = session;
-      //   }
-      // }
-      // existingUser.sessionID = req.sessionID;
-      // await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
+       const existingSessionID = existingUser.sessionID;
+       if (existingSessionID) {
+         const session = await req.sessionStore.get(existingSessionID);
+         if (session) {
+           req.session = session;
+         }
+       }
+       existingUser.sessionID = req.sessionID;
+       await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
 
       //let name = req.body.email.split('@');
       //req.session.username = name[0];
-      req.session.username = req.body.email;
-     
-      console.log('logging in- set username');
-      //res.status(200).send(existingUser); 
+      //req.session.username = req.body.email;
       res.statusCode = 200;
       return res.send(existingUser);
     }
