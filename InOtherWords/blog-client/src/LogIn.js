@@ -11,7 +11,8 @@ export default function LogIn({ setUsername, setError }) {
 
   async function onSubmit(e) {
     e.preventDefault();
-
+    const port = window.location.port;
+    console.log(port);
     try {
       const response = await fetch('https://inotherwords-api.onrender.com/login', {
         method: 'POST',
