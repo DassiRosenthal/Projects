@@ -31,7 +31,7 @@ export default function LogIn({ setUsername, setError }) {
       }
       let name = formData.email.split('@');
       setUsername(name[0]);
-      localStorage.setItem('sessionID', data.user.sessionID)
+     // localStorage.setItem('sessionID', data.user.sessionID)
     } catch (e) {
       setError(e.message);
     }
