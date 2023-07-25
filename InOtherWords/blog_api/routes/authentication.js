@@ -43,17 +43,16 @@ router.post('/login', async (req, res, next) => {
   if (existingUser) {
     const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
     if (correctPswrd) {
-      const existingSessionID = existingUser.sessionID;
-      if (existingSessionID) {
-        const session = await req.sessionStore.get(existingSessionID);
-        if (session) {
-          req.session = session;
-        }
-      }
-      existingUser.sessionID = req.sessionID;
-      await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
-      res.status(200);
-      res.send(existingUser);
+      // const existingSessionID = existingUser.sessionID;
+      // if (existingSessionID) {
+      //   const session = await req.sessionStore.get(existingSessionID);
+      //   if (session) {
+      //     req.session = session;
+      //   }
+      // }
+      // existingUser.sessionID = req.sessionID;
+      // await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
+      res.status(200).send(existingUser);
     }
   }
   const err = new Error('Invalid username or password!');
