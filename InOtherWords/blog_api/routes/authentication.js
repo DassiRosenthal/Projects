@@ -40,10 +40,13 @@ router.post('/login', async (req, res, next) => {
     err.statusCode = 403;
     return next(err);
   }
+  console.log('logging in- validated');
   const existingUser = await global.users.findOne({ email: req.body.email });
   if (existingUser) {
+    console.log('logging in- user exists');
     const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
     if (correctPswrd) {
+      console.log('logging in- correct password');
       // const existingSessionID = existingUser.sessionID;
       // if (existingSessionID) {
       //   const session = await req.sessionStore.get(existingSessionID);
@@ -58,6 +61,7 @@ router.post('/login', async (req, res, next) => {
       //req.session.username = name[0];
       req.session.username = req.body.email;
       //return res.sendStatus(200);
+      console.log('logging in- set username');
       res.status(200).send(existingUser);
     }
   }
