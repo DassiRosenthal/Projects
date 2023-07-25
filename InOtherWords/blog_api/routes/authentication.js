@@ -60,9 +60,10 @@ router.post('/login', async (req, res, next) => {
       //let name = req.body.email.split('@');
       //req.session.username = name[0];
       req.session.username = req.body.email;
-      //return res.sendStatus(200);
+     
       console.log('logging in- set username');
-      res.status(200).send(existingUser);
+      //res.status(200).send(existingUser); 
+      return res.sendStatus(200);
     }
   }
   const err = new Error('Invalid username or password!');
