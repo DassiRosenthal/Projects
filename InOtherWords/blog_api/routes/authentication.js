@@ -54,13 +54,11 @@ router.post('/login', async (req, res, next) => {
         if (!req.session) {
           return next(new Error('Login failed- session error'));
         }
-        console.log('req.session exists');
-        let email = req.session.user.email;
-        console.log(email);
-        //existingUser.sessionID = req.sessionID;
-        //await global.users.updateOne({ id: existingUser.id }, { $set: { sessionID: req.sessionID } });
+        console.log(req.session);
+        // let email = req.session.user.email;
+        // console.log(email);
         res.statusCode = 200;
-        return res.send(email);
+        return res.send(req.session);
       }
       else {
         const invalidErr = new Error('Invalid username or password!');
