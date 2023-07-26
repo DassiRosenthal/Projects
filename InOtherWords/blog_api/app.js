@@ -49,6 +49,7 @@ app.use(session({
   // })
   cookie: {
     path: '/',
+    httpOnly: true,
     secure: true,
     sameSite: 'lax'
   }
