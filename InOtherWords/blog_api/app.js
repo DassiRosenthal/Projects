@@ -51,7 +51,8 @@ app.use(session({
     path: '/',
     httpOnly: true,
     secure: true,
-    sameSite: 'lax'
+    sameSite: 'lax',
+    domain: '.netlify.app'
   }
 }));
 
