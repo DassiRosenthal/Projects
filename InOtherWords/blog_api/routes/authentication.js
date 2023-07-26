@@ -61,7 +61,7 @@ router.post('/login', async (req, res, next) => {
         //req.session.user = {
         const user = {
           username: name[0],
-          isLoggedIn: false
+          //isLoggedIn: false
         }
         req.session.user = user;
         // await req.session.save();
