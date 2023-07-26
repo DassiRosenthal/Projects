@@ -41,13 +41,19 @@ app.use(session({
   secret: 'the-secret-key',
   resave: false,
   saveUninitialized: false,
-  store:MongoStore.create(mongoStoreOptions)
+  store: MongoStore.create(mongoStoreOptions),
   // store: new MongoStore({
   //   url: uri,
   //   ttl: 14 * 24 * 60 * 60,
   //   autoRemove: 'native'
   // })
+  cookie: {
+    path: '/',
+    secure: true,
+    sameSite: 'lax'
+  }
 }));
+
 
 app.use('/posts', require('./routes/posts.js')(socketIo));
 app.use('/', require('./routes/authentication.js'));
