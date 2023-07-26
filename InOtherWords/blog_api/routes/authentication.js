@@ -20,7 +20,7 @@ router.post('/register', async (req, res, next) => {
       if (!result.insertedId) {
         return next(new Error('Registration failed.'))
       }
-      const email = request.body.email;
+      const email = req.body.email;
       req.session.user = {
         email,
         isLoggedIn: true
