@@ -55,7 +55,7 @@ router.post('/login', async (req, res, next) => {
        }
        console.log('out of loops')
        existingUser.sessionID = req.sessionID;
-       await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
+       await global.users.updateOne({ id: existingUser.id }, { $set: { sessionID: req.sessionID } });
        console.log('return');
       //let name = req.body.email.split('@');
       //req.session.username = name[0];
