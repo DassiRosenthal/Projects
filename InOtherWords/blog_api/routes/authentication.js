@@ -54,7 +54,9 @@ router.post('/login', async (req, res, next) => {
         if (!req.session) {
           return next(new Error('Login failed- session error'));
         }
+        console.log('req.session exists');
         let email = req.session.user.email;
+        console.log(email);
         //existingUser.sessionID = req.sessionID;
         //await global.users.updateOne({ id: existingUser.id }, { $set: { sessionID: req.sessionID } });
         res.statusCode = 200;
