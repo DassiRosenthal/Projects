@@ -43,16 +43,20 @@ router.post('/login', async (req, res, next) => {
   if (existingUser) {
     const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
     if (correctPswrd) {
+      console.log('correctPswd');
        const existingSessionID = existingUser.sessionID;
        if (existingSessionID) {
+        console.log(existingSessionId);
          const session = await req.sessionStore.get(existingSessionID);
          if (session) {
+          console.log('session');
            req.session = session;
          }
        }
+       console.log('out of loops')
        existingUser.sessionID = req.sessionID;
        await global.users.updateOne({ id: exist.id }, { $set: { sessionID: req.sessionID } });
-
+       console.log('return');
       //let name = req.body.email.split('@');
       //req.session.username = name[0];
       //req.session.username = req.body.email;
