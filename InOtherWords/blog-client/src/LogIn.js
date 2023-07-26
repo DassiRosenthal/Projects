@@ -5,7 +5,7 @@ export default function LogIn({ setUsername, setError }) {
   const [formData, setFormData] = useFormData({
     email: '',
     password: '',
-    session: localStorage.getItem('sessionID') || ''
+    //session: localStorage.getItem('sessionID') || ''
   });
 
   const [message, setMessage] = useState();
@@ -29,7 +29,7 @@ export default function LogIn({ setUsername, setError }) {
       }
       let name = formData.email.split('@');
       setUsername(name[0]);
-      localStorage.setItem('sessionID', data.sessionID)
+      //localStorage.setItem('sessionID', data.sessionID)
     } catch (e) {
       console.log(e)
       setError(e.message);
