@@ -16,7 +16,7 @@ module.exports = function (socketIo) {
         err.statusCode = 403;
         return next(err);
       }
-      req.body.author = req.session.username;
+      req.body.author = req.session.user.username;
       req.body.date = new Date();
       const result = await global.posts.insertOne(req.body);
 
