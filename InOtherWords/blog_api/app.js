@@ -3,7 +3,7 @@ const http = require('http');
 const io = require('socket.io');
 const PORT = process.env.PORT || 8080; //3000;
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo')(session);
 const app = express();
 
 const server = http.createServer(app);
@@ -33,14 +33,20 @@ const client = new MongoClient(uri);
 
 const mongoStoreOptions = {
   mongoUrl: uri,
-  collectionName: 'sessions'
+  collectionName: 'sessions',
+  autoRemove: 'native'
 }
 
 app.use(session({
   secret: 'the-secret-key',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create(mongoStoreOptions)
+  store:MongoStore.create(mongoStoreOptions)
+  // store: new MongoStore({
+  //   url: uri,
+  //   ttl: 14 * 24 * 60 * 60,
+  //   autoRemove: 'native'
+  // })
 }));
 
 app.use('/posts', require('./routes/posts.js')(socketIo));

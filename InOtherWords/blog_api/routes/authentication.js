@@ -20,6 +20,12 @@ router.post('/register', async (req, res, next) => {
       if (!result.insertedId) {
         return next(new Error('Registration failed.'))
       }
+      const email = request.body.email;
+      req.session.user = {
+        email,
+        isLoggedIn: true
+      }
+      await req.session.save();
     }
     catch (err) {
       if (err.code === 11000) {
@@ -39,38 +45,41 @@ router.post('/login', async (req, res, next) => {
     err.statusCode = 403;
     return next(err);
   }
-  const existingUser = await global.users.findOne({ email: req.body.email });
-  if (existingUser) {
-    const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
-    if (correctPswrd) {
-      console.log('correctPswd');
-       const existingSessionID = existingUser.sessionID;
-       if (existingSessionID) {
-        console.log('existingSessionId');
-         const session = await req.sessionStore.get(existingSessionID);
-         if (session) {
-          console.log('session');
-           req.session = session;
-         }
-       }
-       console.log('out of loops')
-       existingUser.sessionID = req.sessionID;
-       await global.users.updateOne({ id: existingUser.id }, { $set: { sessionID: req.sessionID } });
-       console.log('return');
-      //let name = req.body.email.split('@');
-      //req.session.username = name[0];
-      //req.session.username = req.body.email;
-      res.statusCode = 200;
-      return res.send(existingUser);
+  try {
+    const existingUser = await global.users.findOne({ email: req.body.email });
+    if (existingUser) {
+      const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
+      if (correctPswrd) {
+        if (req.session) {
+          return next(new Error('Login failed- session error'));
+        }
+        let email = req.session.user.email;
+        //existingUser.sessionID = req.sessionID;
+        //await global.users.updateOne({ id: existingUser.id }, { $set: { sessionID: req.sessionID } });
+        res.statusCode = 200;
+        return res.send(email);
+      }
+      else {
+        const invalidErr = new Error('Invalid username or password!');
+        invalidErr.statusCode = 401;
+        //return next(invalidErr);
+        throw (invalidErr);
+      }
     }
   }
-  const err = new Error('Invalid username or password!');
-  err.statusCode = 401;
-  return next(err);
+  catch (err) {
+    return next(err);
+  }
+
 });
 
 router.post('/logout', (req, res) => {
-  req.session.destroy();
+  try {
+    req.session.destroy();
+  }
+  catch (err) {
+    return next(new Error('Error logging out'));
+  }
   res.sendStatus(200);
 });
 
