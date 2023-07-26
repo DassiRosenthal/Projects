@@ -25,7 +25,7 @@ router.post('/register', async (req, res, next) => {
       //req.session.user = {
       const user ={
         username: name[0],
-        isLoggedIn: true
+        isLoggedIn: false
       }
       req.session.user = user;
      // await req.session.save();
@@ -37,7 +37,9 @@ router.post('/register', async (req, res, next) => {
       //return next(new Error('Registration Failed'));
       return next(err);
     }
-    res.sendStatus(201);
+    //res.sendStatus(201);
+    res.statusCode = 200;
+    return res.send(req.session);
   });
 })
 
@@ -58,6 +60,7 @@ router.post('/login', async (req, res, next) => {
           return next(new Error('Login failed- session error'));
         }
         console.log(req.session);
+        req.session.user = {... req.session.user, isLoggedIn: true};
         // let email = req.session.user.email;
         // console.log(email);
         res.statusCode = 200;
@@ -79,12 +82,15 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/logout', (req, res) => {
   try {
-    req.session.destroy();
+    //req.session.destroy();
+    req.session.user = {...req.session.user, isLoggedIn:false};
   }
   catch (err) {
     return next(new Error('Error logging out'));
   }
-  res.sendStatus(200);
+  //res.sendStatus(200);
+  res.statusCode = 200;
+  return res.send(req.session);
 });
 
 module.exports = router;
