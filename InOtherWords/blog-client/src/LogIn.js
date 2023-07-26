@@ -4,7 +4,8 @@ import useFormData from './useForm';
 export default function LogIn({ setUsername, setError }) {
   const [formData, setFormData] = useFormData({
     email: '',
-    password: ''
+    password: '',
+    session: localStorage.getItem('sessionID') || ''
   });
 
   const [message, setMessage] = useState();
