@@ -28,8 +28,10 @@ export default function LogIn({ setUsername, setError }) {
       }
       const data = await response.json();
       console.log(data)
-      let name = formData.email.split('@');
-      setUsername(name[0]);
+      setUsername(data.user.username);
+      //let name = formData.email.split('@');
+      //setUsername(name[0]);
+
       //localStorage.setItem('sessionID', data.sessionID)
     } catch (e) {
       console.log(e)
