@@ -21,12 +21,13 @@ export default function LogIn({ setUsername, setError }) {
         credentials: 'include',
         body: JSON.stringify(formData)
       });
-      const data = await response.json();
-      console.log(data)
+
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(errorText);
       }
+      const data = await response.json();
+      console.log(data)
       let name = formData.email.split('@');
       setUsername(name[0]);
       //localStorage.setItem('sessionID', data.sessionID)
