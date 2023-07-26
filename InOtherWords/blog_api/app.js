@@ -3,7 +3,7 @@ const http = require('http');
 const io = require('socket.io');
 const PORT = process.env.PORT || 8080; //3000;
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 const app = express();
 
 const server = http.createServer(app);
