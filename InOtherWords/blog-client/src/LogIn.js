@@ -31,6 +31,7 @@ export default function LogIn({ setUsername, setError }) {
       setUsername(name[0]);
       localStorage.setItem('sessionID', data.user.sessionID)
     } catch (e) {
+      console.log(e)
       setError(e.message);
     }
   }
