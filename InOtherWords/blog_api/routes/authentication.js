@@ -46,7 +46,7 @@ router.post('/login', async (req, res, next) => {
       console.log('correctPswd');
        const existingSessionID = existingUser.sessionID;
        if (existingSessionID) {
-        console.log(existingSessionId);
+        console.log('existingSessionId');
          const session = await req.sessionStore.get(existingSessionID);
          if (session) {
           console.log('session');
