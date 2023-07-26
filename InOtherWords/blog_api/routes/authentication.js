@@ -21,11 +21,14 @@ router.post('/register', async (req, res, next) => {
         return next(new Error('Registration failed.'))
       }
       const email = req.body.email;
-      req.session.user = {
-        email,
+      const name = email.split('@');
+      //req.session.user = {
+      const user ={
+        username: name[0],
         isLoggedIn: true
       }
-      await req.session.save();
+      req.session.user = user;
+     // await req.session.save();
     }
     catch (err) {
       if (err.code === 11000) {
