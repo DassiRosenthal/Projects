@@ -51,7 +51,7 @@ router.post('/login', async (req, res, next) => {
     if (existingUser) {
       const correctPswrd = await bcrypt.compare(req.body.password, existingUser.password);
       if (correctPswrd) {
-        if (req.session) {
+        if (!req.session) {
           return next(new Error('Login failed- session error'));
         }
         let email = req.session.user.email;
