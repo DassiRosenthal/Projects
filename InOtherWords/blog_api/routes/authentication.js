@@ -63,16 +63,16 @@ router.post('/login', async (req, res, next) => {
           username: name[0],
           //isLoggedIn: false
         }
-        req.session.cookie.user = user;
+        req.session.user = user;
         // await req.session.save();
         // if (!req.session) {
         //   return next(new Error('Login failed- session error'));
         // }
-        console.log(req.session.cookie);
+        console.log(req.session);
         //req.session.user = {... req.session.user, isLoggedIn: true};
 
         res.statusCode = 200;
-        return res.send(req.session.cookie);
+        return res.send(req.session);
       }
       else {
         const invalidErr = new Error('Invalid username or password!');

@@ -12,7 +12,7 @@ module.exports = function (socketIo) {
             err.statusCode = 403;
             return next(err);
         }
-        req.body.author = req.session.cookie.user.username;
+        req.body.author = req.session.user.username;
         req.body.date = new Date();
 
         let currentPost = await global.posts.findOne({ _id: new Mongo.ObjectId(req.params.id) });
