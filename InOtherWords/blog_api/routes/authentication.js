@@ -68,11 +68,11 @@ router.post('/login', async (req, res, next) => {
         // if (!req.session) {
         //   return next(new Error('Login failed- session error'));
         // }
-        console.log(req.session);
+        console.log(req.session.cookie);
         //req.session.user = {... req.session.user, isLoggedIn: true};
 
         res.statusCode = 200;
-        return res.send(req.session);
+        return res.send(req.session.cookie);
       }
       else {
         const invalidErr = new Error('Invalid username or password!');
