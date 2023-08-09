@@ -16,7 +16,7 @@ export default function AddComment({ postId, setError }) {
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include',
-                body: JSON.stringify(formData, author)
+                body: JSON.stringify({...formData, author})
             });
             if (!response.ok) {
                 if (response.status === 401) {
