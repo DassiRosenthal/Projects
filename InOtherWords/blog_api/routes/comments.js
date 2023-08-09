@@ -12,6 +12,7 @@ module.exports = function (socketIo) {
             err.statusCode = 403;
             return next(err);
         }
+        console.log(req);
         //req.body.author = req.session.user.username;
         req.body.date = new Date();
 
