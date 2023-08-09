@@ -63,7 +63,7 @@ router.post('/login', async (req, res, next) => {
           username: name[0],
           //isLoggedIn: false
         }
-        req.session.user = user;
+        req.session.cookie.user = user;
         // await req.session.save();
         // if (!req.session) {
         //   return next(new Error('Login failed- session error'));
