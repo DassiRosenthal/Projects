@@ -6,7 +6,7 @@ export default function AddComment({ postId, setError }) {
     const [formData, setFormData] = useForm({
         body: ''
     });
-
+    const author = 'Joe';
     async function onSubmit(e) {
         e.preventDefault();
         try {
@@ -16,7 +16,7 @@ export default function AddComment({ postId, setError }) {
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include',
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData, author)
             });
             if (!response.ok) {
                 if (response.status === 401) {
