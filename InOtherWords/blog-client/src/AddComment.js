@@ -4,11 +4,12 @@ import './AddComment.css';
 
 export default function AddComment({ postId, setError }) {
     const [formData, setFormData] = useForm({
-        author: localStorage.username,
+        //author: localStorage.username,
         body: ''
     });
     async function onSubmit(e) {
         e.preventDefault();
+        setFormData({'author': localStorage.username, 'body': formData.body})
         try {
             const response = await fetch(`https://inotherwords-api.onrender.com/addComment/${postId}`, {
                 method: 'POST',
