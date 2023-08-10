@@ -9,7 +9,9 @@ export default function AddComment({ postId, setError }) {
     });
     async function onSubmit(e) {
         e.preventDefault();
-        setFormData({'author': localStorage.username, 'body': formData.body})
+        //const event1 = { target: { name: 'auther', value: 'localStorage.username' } };
+        setFormData({ target: { name: 'auther', value: 'localStorage.username' } });
+       // setFormData({'author': localStorage.username, 'body': formData.body})
         try {
             const response = await fetch(`https://inotherwords-api.onrender.com/addComment/${postId}`, {
                 method: 'POST',
@@ -26,8 +28,8 @@ export default function AddComment({ postId, setError }) {
                 const errorText = await response.text();
                 throw new Error(errorText);
             }
-            const event = { target: { name: 'body', value: '' } };
-            setFormData(event);
+            //const event = { target: { name: 'body', value: '' } };
+            setFormData({ target: { name: 'body', value: '' } });
         } catch (e) {
             setError(e.message);
         }
