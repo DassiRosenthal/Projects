@@ -4,9 +4,9 @@ import './AddComment.css';
 
 export default function AddComment({ postId, setError }) {
     const [formData, setFormData] = useForm({
+        author: localStorage.username,
         body: ''
     });
-    const author = 'Joe';
     async function onSubmit(e) {
         e.preventDefault();
         try {
@@ -16,7 +16,7 @@ export default function AddComment({ postId, setError }) {
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include',
-                body: JSON.stringify({...formData, author})
+                body: JSON.stringify(formData)
             });
             if (!response.ok) {
                 if (response.status === 401) {
@@ -25,7 +25,7 @@ export default function AddComment({ postId, setError }) {
                 const errorText = await response.text();
                 throw new Error(errorText);
             }
-            const event = {target: {name:'body', value:''}};
+            const event = { target: { name: 'body', value: '' } };
             setFormData(event);
         } catch (e) {
             setError(e.message);
