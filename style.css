@@ -1,0 +1,108 @@
+.pop-up-container {
+    display: flex;
+}
+
+.pop-up {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .30196078431372547);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1.42fr;
+    font-family: 'Poppins', sans-serif;
+}
+
+.options-panel {
+    text-align: center;
+    padding: 10px;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #004d44;
+    margin-bottom: 0px;
+}
+
+hr {
+    border-style: none;
+    background-color: #c0e66c;
+    height: 1px;
+    border-radius: 10px;
+}
+
+.title-hr {
+    width: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 10px 0px 30px 0px;
+    margin: 40px;
+    font-size: 0.85em;
+    font-weight: 800;
+    color: #00435b;
+}
+
+li {
+    padding-bottom: 30px;
+}
+
+.options-button {
+    cursor: pointer;
+    font-family: inherit;
+    background-color: #c0e66c;
+    color: #00435b;
+    padding: 8px 20px;
+    width: 180px;
+    border: none;
+    border-radius: 30px;
+    margin: 6px;
+}
+
+.options-button:hover {
+    transition: 350ms;
+    background-color: #00435b;
+    color: white;
+}
+
+.img-panel {
+    background-image: url(https://res.cloudinary.com/da3rom333/image/upload/q_auto,f_auto/v1688653579/Website%20Assets/SVGs/Login_Background_bhgvrd.svg);
+    background-size: cover;
+    border-radius: 0px 16px 16px 0px;
+    color: white;
+    text-align: right;
+}
+
+.img-panel-text {
+    padding: 5em;
+    padding-top: 8em;
+    display: grid;
+    text-align: left;
+}
+
+.close-button {
+    background-color: transparent;
+    color: white;
+    height: 20px;
+    width: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    transition: 350ms;
+    color: #00435b;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0px;
+}
+
+h3 {
+    font-size: 0.65em;
+    font-weight: 600;
+}
+
+.img-panel-hr {
+    width: 50px;
+    margin-left: 0;
+}
